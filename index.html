@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Discount Koala Meat</title>
+        <style>
+            ::-moz-selection {
+                background: #b3d4fc;
+                text-shadow: none;
+            }
+
+            ::selection {
+                background: #b3d4fc;
+                text-shadow: none;
+            }
+
+            html {
+                padding: 30px 10px;
+                font-size: 20px;
+                line-height: 1.4;
+                color: #737373;
+                background: #f0f0f0;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+            }
+
+            html,
+            input {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
+
+            body {
+                max-width: 500px;
+                _width: 500px;
+                padding: 30px 20px 50px;
+                border: 1px solid #b3b3b3;
+                border-radius: 4px;
+                margin: 0 auto;
+                box-shadow: 0 1px 10px #a7a7a7, inset 0 1px 0 #fff;
+                background: #fcfcfc;
+            }
+
+            h1 {
+                margin: 0 10px;
+                font-size: 50px;
+                text-align: center;
+            }
+
+            h1 span {
+                color: #bbb;
+            }
+
+            h3 {
+                margin: 1.5em 0 0.5em;
+            }
+
+            p {
+                margin: 1em 0;
+            }
+
+            ul {
+                padding: 0 0 0 40px;
+                margin: 1em 0;
+            }
+
+            .container {
+                max-width: 380px;
+                _width: 380px;
+                margin: 0 auto;
+            }
+
+            
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Say Something.</h1>
+            <p>Talk to people. Avoid sex perverts!
+            Made for everybody. No username is required.
+            This website will do its best to not keep logs.</p>
+            <hr />
+            Communicate
+        <div><input id=input placeholder=Speak /></div>
+<hr />
+<div id=box></div>
+<div id=pubnub pub-key=demo sub-key=demo></div>
+<script src=http://cdn.pubnub.com/pubnub-3.1.min.js></script>
+
+<script>(function(){
+var box = PUBNUB.$('box'), input = PUBNUB.$('input'), channel = 'chat';
+PUBNUB.subscribe({
+channel : channel,
+callback : function(text) { box.innerHTML = (''+text).replace( /[<>]/g, '' ) + '<br>' + box.innerHTML; }
+});
+PUBNUB.bind( 'keyup', input, function(e) {
+(e.keyCode || e.charCode) === 13 && PUBNUB.publish({
+channel : channel, message : input.value, x : (input.value='')
+});
+} );
+})();</script>
+<hr />
+   
+   		<div style="clear:both;"></div>
+    </div>
+    </div>
+    </body>
+</html>
